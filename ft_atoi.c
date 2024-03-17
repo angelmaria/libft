@@ -39,17 +39,17 @@ int	ft_atoi(const char *str)
 	return (res * sign);
 }
 
-// DO NOT INCLUDE IN SUBMISSION!!
+// BORRAR CUANDO SE SUBA A LA VLOGOSPHERE
 // int	main(int ac, char **av)
 // {
-// 	int mine; 
-// 	int theirs;
+// 	int test1; 
+// 	int test2;
 
 // 	if (ac == 2)
 // 	{
-// 		mine = ft_atoi(av[1]);
-// 		theirs = ft_atoi(av[1]);
-// 		printf("mine: %d | theirs: %d\n", mine, theirs);
+// 		test1 = ft_atoi(av[0]);
+// 		test2 = ft_atoi(av[1]);
+// 		printf("mine: %d | theirs: %d\n", test1, test2);
 // 	}
 // 	return (0);
 // }
