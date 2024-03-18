@@ -7,7 +7,7 @@ int	main(int argc, char *argv[])
 	int	arr1[] = { 3, 4 }; // 0 0 0 3 0 0 0 4
 	int	arr2[] = { 1, 2 };
 
-	if (memchr(arr1, 1, sizeof(int) * 2) != NULL) 
+	if (memchr(arr2, 1, sizeof(int) * 2) != NULL) 
 	{
 		printf("Found the byte!\n");
 	} else {
