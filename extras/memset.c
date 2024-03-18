@@ -8,7 +8,13 @@ int	main(void)
 	memset(buffer, 'c', sizeof(char) * 5);
 	memset(buffer+5, 'd', sizeof(char) * 5);
 
-	for (int i = 0; i < 10; i++)
+	int	i;
+	
+	i = 0;
+	while (i < 10)
+	{
 		printf("%c", buffer[i]);
+		i++;
+	}
 	printf("\n");
 }

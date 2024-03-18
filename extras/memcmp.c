@@ -4,8 +4,8 @@
 
 int	main(int argc, char *argv[])
 {
-	int	arr1[] = {1, 2 };
-	short int	arr2[] = {1, 2 };
+	int	arr1[] = {1, 2 }; // 0 0 0 1
+	short int	arr2[] = {1, 2 }; // 0 1 0 2
 
 	if (memcmp(arr1, arr2, 2 * sizeof(short int)) == 0)
 	{

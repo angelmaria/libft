@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 /*
- 1. Espacios en blanco
- 2. El signo
- 3. La conversión
+ 1. Obviar espacios en blanco
+ 2. Transformar el signo negativo si lo hubiera
+ 3. La conversión de ascii a integer
  */
 
 #include "libft.h"

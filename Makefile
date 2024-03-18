@@ -6,7 +6,7 @@
 #    By: angemart <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 13:03:35 by angemart          #+#    #+#              #
-#    Updated: 2024/03/14 13:25:15 by angemart         ###   ########.fr        #
+#    Updated: 2024/03/18 11:58:39 by cash             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ NAME = libft.a
 
 SRC = ft_atoi.c \
 			ft_strdup.c \
+			ft_bzero.c \
 
 OBJ = $(SRC:.c=.o)
 
