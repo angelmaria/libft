@@ -15,8 +15,12 @@ FLAG = -Wall -Wextra -Werror
 NAME = libft.a
 
 SRC = ft_atoi.c \
-			ft_strdup.c \
 			ft_bzero.c \
+			ft_isalnum.c \
+			ft_isascii.c \
+			ft_isdigit.c \
+			ft_isprint.c \
+			ft_strdup.c \
 
 OBJ = $(SRC:.c=.o)
 
