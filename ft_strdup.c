@@ -29,7 +29,7 @@ char	*ft_strdup(const char *src)
 	int		i;
 
 	i = 0;
-	if (!(new = (char*) malloc(sizeof(char) * ft_strlen(src) + 1)))
+	if (!(new = (char *) malloc(sizeof(char) * ft_strlen(src) + 1)))
 		return (NULL);
 	while (*src)
 		new[i++] = *src++;
