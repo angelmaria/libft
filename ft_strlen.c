@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cash <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/27 10:40:16 by cash              #+#    #+#             */
-/*   Updated: 2024/03/27 10:41:11 by cash             ###   ########.fr       */
+/*   Created: 2024/03/29 12:11:34 by cash              #+#    #+#             */
+/*   Updated: 2024/03/29 12:11:39 by cash             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+size_t	ft_strlen(const char *s)
 {
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
+/* 
+int main(int argc, char **argv)
+{
+	for(int i = 0; i < argc; i++)
+		printf("Len [%d](\'%s\') = %ld\n", i, argv[i], ft_strlen(argv[i]));
+	return (0);
+} */
