@@ -40,7 +40,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "OBJ y $(NAME) borrado"
+	@echo "OBJ y $(NAME) borrados"
 
 re: fclean all
 
