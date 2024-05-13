@@ -53,7 +53,7 @@ clean:
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "OBJ y $(NAME) borrados"
+	@echo "OBJ and $(NAME) deleted"
 
 re: fclean all
 

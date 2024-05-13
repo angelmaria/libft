@@ -27,3 +27,10 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
+
+// Key Points:
+
+// memchr is efficient for finding the first occurrence of a character within a memory block.
+// It's important to consider the size of the memory block (n) to avoid exceeding valid memory boundaries.
+// The return value is a pointer, so you might need to cast it back to the appropriate data type for further processing (e.g., cast to char* for string manipulation).
+// Remember that memchr only searches for the first occurrence. If you need to find all occurrences, you'll need to implement a loop or use a different function like strchr (for null-terminated strings).
