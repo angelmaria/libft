@@ -27,7 +27,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	}
 	return (NULL);
 }
-
 // Key Points:
 
 // memchr is efficient for finding the first occurrence of a character within a memory block.
