@@ -35,6 +35,7 @@ char	*ft_itoa(int n)
 	int		num;
 	int		len;
 
+	num = n; // inicializao variable num aquí -también está en línea 49- porque me daba un warning. Pero entonces supero las 25 línas. Que bien!
 	len = get_size(n);
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)

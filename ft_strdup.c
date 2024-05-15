@@ -13,7 +13,7 @@
 #include "libft.h"
 #include <string.h>
 
-int	ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ char	*ft_strdup(const char *src)
 	int		i;
 
 	i = 0;
-	if (!(new = (char *) malloc(sizeof(char) * ft_strlen(src) + 1)))
+	if (!(new = (char *) malloc(sizeof(char) * ft_strlen(src) + 1))) // Error norminette for "assignment in control structure"
 		return (NULL);
 	while (*src)
 		new[i++] = *src++;

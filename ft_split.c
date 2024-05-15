@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t		get_cnt(char const *s, char c)
+size_t	get_cnt(char const *s, char c)
 {
 	size_t		cnt;
 
@@ -31,7 +31,7 @@ size_t		get_cnt(char const *s, char c)
 	return (cnt);
 }
 
-char		**free_machine(char **s, size_t idx)
+char	**free_machine(char **s, size_t idx)
 {
 	while (s[idx] != NULL && idx >= 0)
 	{
@@ -44,15 +44,16 @@ char		**free_machine(char **s, size_t idx)
 	return (NULL);
 }
 
-char		**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	size_t		idx;
 	size_t		len;
 	size_t		word_cnt;
 	char		**words;
 
-	if (!s || !(words = (char **)malloc(sizeof(char *) * (get_cnt(s, c) + 1))))
+	if (!s || !words)
 		return (NULL);
+	words = (char **)malloc(sizeof(char *) * (get_cnt(s, c) + 1)); // Hago esto porque me daba error de "Assignment in control structure" por realizar una asignación dentro de una estructura de control (if, while..). Se debe realizar la asignación fuera del if.
 	word_cnt = get_cnt(s, c);
 	idx = 0;
 	while (*s)
@@ -72,6 +73,51 @@ char		**ft_split(char const *s, char c)
 	words[idx] = 0;
 	return (words);
 }
+// Esta función supera las 25 líneas. Habría que dividirla en funciones más pequeñas como:
+// static char	**allocate_words(char const *s, char c, size_t *word_cnt)
+// {
+// 	char **words;
+
+// 	*word_cnt = get_cnt(s, c);
+// 	words = (char **)malloc(sizeof(char *) * (*word_cnt + 1));
+// 	return (words);
+// }
+
+// static char	*get_next_word(char const **s, char c, size_t *len)
+// {
+// 	*len = 0;
+// 	while (**s && **s == c)
+// 		(*s)++;
+// 	while (*(*s + *len) && *(*s + *len) != c)
+// 		(*len)++;
+// 	return (ft_substr(*s, 0, *len));
+// }
+
+// char	**ft_split(char const *s, char c)
+// {
+// 	size_t	idx;
+// 	size_t	len;
+// 	size_t	word_cnt;
+// 	char	**words;
+
+// 	if (!s)
+// 		return (NULL);
+// 	words = allocate_words(s, c, &word_cnt);
+// 	if (!words)
+// 		return (NULL);
+// 	idx = 0;
+// 	while (idx < word_cnt)
+// 	{
+// 		words[idx] = get_next_word(&s, c, &len);
+// 		if (!words[idx])
+// 			return (free_machine(words, idx));
+// 		s += len;
+// 		idx++;
+// 	}
+// 	words[idx] = NULL;
+// 	return (words);
+// }
+// Testing ----------------------------------------------------------------
 /* 
 int main(int argc, char **argv)
 {	
