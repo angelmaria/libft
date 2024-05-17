@@ -14,28 +14,22 @@
 #include <string.h>
 #include <stdio.h>
 
-size_t	ft_strlen(const char *s)
+char	*ft_strdup(const char *s)
 {
-	int	i;
-
-	i = 0;
-	while (*s++)
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(const char *src)
-{
-	char	*new;
 	int		i;
+	int		j;
+	char	*str;
 
 	i = 0;
-	if (!(new = (char *) malloc(sizeof(char) * ft_strlen(src) + 1))) // Error norminette for "assignment in control structure"
-		return (NULL);
-	while (*src)
-		new[i++] = *src++;
-	new[i] = '\0';
-	return (new);
+	j = ft_strlen(s);
+	str = (char *)malloc(sizeof(*str) * (j + 1));
+	while (i < j)
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
 // Test (borrar)
 int main(void)

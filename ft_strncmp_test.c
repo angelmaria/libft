@@ -1,5 +1,7 @@
 #include "libft.h"
 
+int	ft_strncmp_test(const char *s1, char *s2, size_t n);
+
 int main(void)
 {
     char *str1 = "Hola Mundo";

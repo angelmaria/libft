@@ -17,6 +17,7 @@
  */
 
 #include "libft.h"
+#include <stdio.h>
 
 int	ft_atoi(const char *str)
 {
@@ -38,18 +39,26 @@ int	ft_atoi(const char *str)
 	}
 	return (res * sign);
 }
-
-// BORRAR CUANDO SE SUBA A LA VLOGOSPHERE
-// int	main(int ac, char **av)
-// {
-// 	int test1; 
-// 	int test2;
-
-// 	if (ac == 2)
-// 	{
-// 		test1 = ft_atoi(av[0]);
-// 		test2 = ft_atoi(av[1]);
-// 		printf("mine: %d | theirs: %d\n", test1, test2);
-// 	}
-// 	return (0);
-// }
+// Test (borrar)
+int main(void)
+{
+    // Prueba con números positivos
+    printf("ft_atoi('123') = %d\n", ft_atoi("123"));
+    
+    // Prueba con números negativos
+    printf("ft_atoi('-123') = %d\n", ft_atoi("-123"));
+    
+    // Prueba con espacios al principio
+    printf("ft_atoi('   456') = %d\n", ft_atoi("   456"));
+    
+    // Prueba con signo más
+    printf("ft_atoi('+789') = %d\n", ft_atoi("+789"));
+    
+    // Prueba con caracteres no numéricos al principio
+    printf("ft_atoi('abc123') = %d\n", ft_atoi("abc123"));
+    
+    // Prueba con caracteres no numéricos al final
+    printf("ft_atoi('123abc') = %d\n", ft_atoi("123abc"));
+    
+    return 0;
+}
