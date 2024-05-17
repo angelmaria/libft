@@ -12,6 +12,7 @@
 
 #include "libft.h"
 #include <string.h>
+#include <stdio.h>
 
 size_t	ft_strlen(const char *s)
 {
@@ -36,18 +37,26 @@ char	*ft_strdup(const char *src)
 	new[i] = '\0';
 	return (new);
 }
-
-// BORRAR ESTE CONTENIDO ANTES DE SUBIRLO
-int	main(int ac, char **av)
+// Test (borrar)
+int main(void)
 {
-	char	*mine;
-	char	*theirs;
+    const char *original = "Texto de prueba";
+    char *duplicado;
 
-	if (ac == 2)
-	{
-		mine = ft_strdup(av[1]);
-		theirs = strdup(av[1]);
-		printf(":%s:\n:%s:\n", mine, theirs);
-	}
-	return (0);
+    duplicado = ft_strdup(original);
+    if (duplicado == NULL)
+    {
+        printf("Error al duplicar la cadena.\n");
+        return 1;
+    }
+
+    printf("Original: %s\n", original);
+    printf("Duplicado: %s\n", duplicado);
+    printf("Longitud del original: %zu\n", ft_strlen(original));
+    printf("Longitud del duplicado: %zu\n", ft_strlen(duplicado));
+
+    // No olvides liberar la memoria asignada con malloc
+    free(duplicado);
+
+    return 0;
 }

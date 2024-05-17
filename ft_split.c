@@ -51,9 +51,9 @@ char	**ft_split(char const *s, char c)
 	size_t		word_cnt;
 	char		**words;
 
-	if (!s || !words)
+	words = NULL;
+	if (!s || !(words = (char **)malloc(sizeof(char *) * (get_cnt(s, c) + 1)))) // Hago esto porque me daba error de "Assignment in control structure" por realizar una asignación dentro de una estructura de control (if, while..). Se debe realizar la asignación fuera del if.
 		return (NULL);
-	words = (char **)malloc(sizeof(char *) * (get_cnt(s, c) + 1)); // Hago esto porque me daba error de "Assignment in control structure" por realizar una asignación dentro de una estructura de control (if, while..). Se debe realizar la asignación fuera del if.
 	word_cnt = get_cnt(s, c);
 	idx = 0;
 	while (*s)
