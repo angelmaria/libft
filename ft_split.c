@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-size_t	get_cnt(char const *s, char c)
+size_t	get_cnt(char const *s, char c) 
 {
 	size_t		cnt;
 
@@ -24,23 +24,24 @@ size_t	get_cnt(char const *s, char c)
 		else
 		{
 			cnt++;
-			while (*s != '\0' && *s != c)
+			while (*s != '\0' && *s != c) 
 				s++;
 		}
 	}
 	return (cnt);
 }
 
-char	**free_machine(char **s, size_t idx)
+char	**free_machine(char **s, size_t idx) 
 {
 	while (s[idx] != NULL && idx >= 0)
 	{
-		free(s[idx]);
+		free(s[idx]); 
 		s[idx] = NULL;
-		idx--;
+
+		idx--; 
 	}
-	free(s);
-	s = NULL;
+	free(s); 
+	s = NULL; 
 	return (NULL);
 }
 
@@ -49,10 +50,10 @@ char	**ft_split(char const *s, char c)
 	size_t		idx;
 	size_t		len;
 	size_t		word_cnt;
-	char		**words;
+	char		**words; 
 
-	words = NULL;
-	if (!s || !(words = (char **)malloc(sizeof(char *) * (get_cnt(s, c) + 1)))) // Hago esto porque me daba error de "Assignment in control structure" por realizar una asignación dentro de una estructura de control (if, while..). Se debe realizar la asignación fuera del if.
+	words = NULL; 
+	if (!s || !(words = (char **)malloc(sizeof(char *) * (get_cnt(s, c) + 1)))) 
 		return (NULL);
 	word_cnt = get_cnt(s, c);
 	idx = 0;
@@ -73,64 +74,26 @@ char	**ft_split(char const *s, char c)
 	words[idx] = 0;
 	return (words);
 }
-// Esta función supera las 25 líneas. Habría que dividirla en funciones más pequeñas como:
-// static char	**allocate_words(char const *s, char c, size_t *word_cnt)
-// {
-// 	char **words;
+// Test (borrar)
+int main(void)
+{
+    char *frase = "Explorando el mundo de la programación en C";
+    char delimitador = ' '; // Suponiendo que queremos dividir la frase por espacios
+    char **palabras;
 
-// 	*word_cnt = get_cnt(s, c);
-// 	words = (char **)malloc(sizeof(char *) * (*word_cnt + 1));
-// 	return (words);
-// }
+    palabras = ft_split(frase, delimitador);
+    if (!palabras)
+    {
+        printf("Error: No se pudo dividir la frase.\n");
+        return (1);
+    }
 
-// static char	*get_next_word(char const **s, char c, size_t *len)
-// {
-// 	*len = 0;
-// 	while (**s && **s == c)
-// 		(*s)++;
-// 	while (*(*s + *len) && *(*s + *len) != c)
-// 		(*len)++;
-// 	return (ft_substr(*s, 0, *len));
-// }
+    for (size_t i = 0; palabras[i] != NULL; i++)
+    {
+        printf("Palabra %zu: '%s'\n", i, palabras[i]);
+        free(palabras[i]); // Liberamos cada palabra individualmente
+    }
+    free(palabras); // Liberamos el arreglo de palabras
 
-// char	**ft_split(char const *s, char c)
-// {
-// 	size_t	idx;
-// 	size_t	len;
-// 	size_t	word_cnt;
-// 	char	**words;
-
-// 	if (!s)
-// 		return (NULL);
-// 	words = allocate_words(s, c, &word_cnt);
-// 	if (!words)
-// 		return (NULL);
-// 	idx = 0;
-// 	while (idx < word_cnt)
-// 	{
-// 		words[idx] = get_next_word(&s, c, &len);
-// 		if (!words[idx])
-// 			return (free_machine(words, idx));
-// 		s += len;
-// 		idx++;
-// 	}
-// 	words[idx] = NULL;
-// 	return (words);
-// }
-// Testing ----------------------------------------------------------------
-/* 
-int main(int argc, char **argv)
-{	
-	(void)argc;
-	char **words;
-	
-	words = ft_split(argv[1], argv[2][0]);
-
-	int i = 0;
-	for(; words[i]; i++)
-		printf("words[%d] = \'%s\'\n", i, words[i]);
-	printf("words[%d] = NULL\n", i);
-
-	ft_delete_matrix(words);
+    return (0);
 }
- */
