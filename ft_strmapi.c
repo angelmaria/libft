@@ -22,30 +22,31 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char)) // char: El tipo 
 }
 // Test (borrar)
 // Función de ejemplo para transformar los caracteres a mayúsculas
-char my_toupper(unsigned int i, char c)
+char	to_upper(unsigned int i, char c)
 {
-    if (c >= 'a' && c <= 'z')
-        return c - 32; // Convierte el carácter a mayúscula
-    else
-        return c; // Devuelve el carácter sin cambios si no es minúscula
+	if (i % 2 == 0 && c >= 'a' && c <= 'z')
+		return (c - 32); // Convierte a mayúscula si 'i' es par
+	else if (i % 2 != 0 && c >= 'A' && c <= 'Z')
+		return (c + 32); // Convierte a minúscula si 'i' es impar
+	return (c); // Devuelve el carácter sin cambios si no es letra o no necesita cambio
 }
 
-int main(void)
+// Función 'main' para probar 'ft_strmapi'
+int	main(void)
 {
-    char const *s = "hola mundo";
-    char *resultado;
+	char const *s = "hola mundo";
+	char *result;
 
-    // Llama a ft_strmapi con la cadena 's' y la función 'my_toupper'
-    resultado = ft_strmapi(s, my_toupper);
-    if (resultado != NULL)
-    {
-        printf("Cadena original: '%s'\n", s);
-        printf("Cadena transformada: '%s'\n", resultado);
-        free(resultado); // Libera la memoria asignada
-    }
-    else
-    {
-        printf("Error al reservar memoria.\n");
-    }
-    return (0);
+	result = ft_strmapi(s, to_upper);
+	if (result != NULL)
+	{
+		printf("Cadena original: %s\n", s);
+		printf("Cadena transformada: %s\n", result);
+		free(result); // No olvides liberar la memoria
+	}
+	else
+	{
+		printf("Error al reservar memoria.\n");
+	}
+	return (0);
 }
