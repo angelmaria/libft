@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-FLAG = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 NAME = libft.a
 
@@ -22,15 +22,6 @@ SRC = ft_atoi.c \
 			ft_isdigit.c \
 			ft_isprint.c \
 			ft_itoa.c \
-			ft_lstnew.c \
-			ft_lstadd_font.c \
-			ft_lstadd_back.c \
-			ft_lstsize.c \
-			ft_lstlast.c \
-			ft_lstdelone.c \
-			ft_lstclear.c \
-			ft_lstiter.c \
-			ft_lstmap.c \
 			ft_memchr.c \
 			ft_memcmp.c \
 			ft_memcpy.c \
@@ -58,19 +49,35 @@ SRC = ft_atoi.c \
 			ft_tolower.c \
 			ft_toupper.c \
 
-OBJ = $(SRC:.c=.o)
+BNS_SRC = ft_lstnew.c \
+			ft_lstadd_front.c \
+			ft_lstadd_back.c \
+			ft_lstsize.c \
+			ft_lstlast.c \
+			ft_lstdelone.c \
+			ft_lstclear.c \
+			ft_lstiter.c \
+			ft_lstmap.c \
 
-all: $(NAME)
+OBJS = $(SRC:.c=.o)
 
-$(NAME): $(OBJ)
-	@ar rc $(NAME) $(OBJ)
+BNS_OBJS = $(BNS_SRC:.c=.o)
+
+$(NAME): $(OBJS)
+	@ar rc $(NAME) $(OBJS)
 	@echo "$(NAME) created"
 
 %.o: %.c
-	@gcc $(FLAG) -c $< -o $@
+	@gcc $(FLAGS) -c $< -o $@
+
+all: $(NAME)
+
+bonus: $(BNS_OBJS)
+	@ar rc $(NAME) $(BNS_OBJS)
+	@echo "Bonus functions incorporated to $(NAME)"
 
 clean:
-	@rm -f $(OBJ)
+	@rm -f $(OBJS) $(BNS_OBJS)
 	@echo "OBJ deleted"
 
 fclean: clean
@@ -79,4 +86,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all, clean, fclean, re
+.PHONY: all, bonus, clean, fclean, re

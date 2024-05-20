@@ -12,6 +12,24 @@
 
 #include "libft.h"
 
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	char	*str;
+
+	i = 0;
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	while (i < len && s[start + i])
+	{
+		str[i] = s[start + i];
+		i++;
+	}
+	str[i] = 0;
+	return (str);
+}
+
 size_t	get_cnt(char const *s, char c) 
 {
 	size_t		cnt;
@@ -31,7 +49,7 @@ size_t	get_cnt(char const *s, char c)
 	return (cnt);
 }
 
-char	**free_machine(char **s, size_t idx) 
+char	**free_array(char **s, size_t idx) 
 {
 	while (s[idx] != NULL && idx >= 0)
 	{
@@ -52,7 +70,6 @@ char	**ft_split(char const *s, char c)
 	size_t		word_cnt;
 	char		**words; 
 
-	words = NULL; 
 	if (!s || !(words = (char **)malloc(sizeof(char *) * (get_cnt(s, c) + 1)))) 
 		return (NULL);
 	word_cnt = get_cnt(s, c);
@@ -67,7 +84,7 @@ char	**ft_split(char const *s, char c)
 			while (*(s + len) && *(s + len) != c)
 				len++;
 			if (idx < word_cnt && !(words[idx++] = ft_substr(s, 0, len)))
-				return (free_machine(words, idx));
+				return (free_array(words, idx));
 			s += len;
 		}
 	}
