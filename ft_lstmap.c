@@ -30,7 +30,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 		}
 		ft_lstadd_back(&lst2, node);
 		lst = lst->next;
-
 	}
 	return (lst2);
 }
