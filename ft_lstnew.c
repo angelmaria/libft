@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: angemart <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/24 12:46:21 by angemart          #+#    #+#             */
+/*   Updated: 2024/04/24 12:46:29 by angemart         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 t_list	*ft_lstnew(void *content)
@@ -10,22 +22,4 @@ t_list	*ft_lstnew(void *content)
 	new->content = content;
 	new->next = NULL;
 	return (new);
-}
-// Test (borrar)
-int	main(void)
-{
-	t_list	*element;
-	char	*content = "Este es el contenido del elemento";
-	int		fd = 1; // Descriptor de archivo para la salida estándar
-
-	element = ft_lstnew(content);
-	if (!element)
-	{
-		ft_putendl_fd("Error al crear el elemento.", fd);
-		return (1);
-	}
-	ft_putstr_fd("El contenido del elemento es: ", fd);
-	ft_putendl_fd((char *)element->content, fd);
-	free(element); // No olvides liberar la memoria al final
-	return (0);
 }

@@ -16,7 +16,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h> // quitarla, solo para hacer pruebas con main
+# include <stdio.h>
 
 typedef struct s_list
 {
@@ -58,7 +58,6 @@ size_t				ft_strlcat(char *dst, const char *src, size_t size);
 size_t				ft_strlcpy(char *dest, const char *src, size_t size);
 size_t				ft_strlen(const char *str);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
-int					ft_strncmp_test(const char *s1, char *s2, size_t n);
 int					ft_strncmp(const char *s1, char *s2, size_t n);
 char				*ft_strnstr(const char *haystack, const char *needle, size_t n);
 char				*ft_strrchr(const char *s, int c);

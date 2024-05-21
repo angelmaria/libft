@@ -34,22 +34,3 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 		i++;
 	return (i);
 }
-// Test (borrar)
-int main(void)
-{
-    char src[] = "Copilot es asombroso!";
-    char dest[19];
-    size_t copied;
-
-    // Prueba la función ft_strlcpy con un tamaño de buffer suficiente
-    copied = ft_strlcpy(dest, src, sizeof(dest));
-    printf("Cadena copiada: '%s'\n", dest);
-    printf("Longitud de la cadena original: %zu\n", copied);
-
-    // Prueba la función ft_strlcpy con un tamaño de buffer más pequeño que la cadena de origen
-    copied = ft_strlcpy(dest, src, 10);
-    printf("Cadena copiada con buffer limitado: '%s'\n", dest);
-    printf("Longitud de la cadena original: %zu\n", copied);
-
-    return 0;
-}

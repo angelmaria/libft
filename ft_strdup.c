@@ -11,8 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
-#include <stdio.h>
 
 char	*ft_strdup(const char *s)
 {
@@ -30,27 +28,4 @@ char	*ft_strdup(const char *s)
 	}
 	str[i] = '\0';
 	return (str);
-}
-// Test (borrar)
-int main(void)
-{
-    const char *original = "Texto de prueba";
-    char *duplicado;
-
-    duplicado = ft_strdup(original);
-    if (duplicado == NULL)
-    {
-        printf("Error al duplicar la cadena.\n");
-        return 1;
-    }
-
-    printf("Original: %s\n", original);
-    printf("Duplicado: %s\n", duplicado);
-    printf("Longitud del original: %zu\n", ft_strlen(original));
-    printf("Longitud del duplicado: %zu\n", ft_strlen(duplicado));
-
-    // No olvides liberar la memoria asignada con malloc
-    free(duplicado);
-
-    return 0;
 }

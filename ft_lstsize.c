@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: angemart <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/24 12:46:21 by angemart          #+#    #+#             */
+/*   Updated: 2024/04/24 12:46:29 by angemart         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 int	ft_lstsize(t_list *lst)
@@ -11,30 +23,4 @@ int	ft_lstsize(t_list *lst)
 		i++;
 	}
 	return (i);
-}
-// Test (borrar)
-int main(void)
-{
-    t_list *head;
-    t_list *temp;
-    int size;
-
-    // Crear el primer nodo (cabeza de la lista)
-    head = ft_lstnew("Primer elemento");
-    temp = head;
-
-    // Añadir más nodos a la lista
-    temp->next = ft_lstnew("Segundo elemento");
-    temp = temp->next;
-    temp->next = ft_lstnew("Tercer elemento");
-    temp = temp->next;
-    temp->next = ft_lstnew("Cuarto elemento");
-
-    // Calcular el tamaño de la lista
-    size = ft_lstsize(head);
-    printf("El tamaño de la lista es: %d\n", size);
-
-    // Liberar la memoria de la lista
-    ft_lstclear(&head, &free);
-    return (0);
 }

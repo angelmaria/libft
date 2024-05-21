@@ -91,26 +91,3 @@ char	**ft_split(char const *s, char c)
 	words[idx] = 0;
 	return (words);
 }
-// Test (borrar)
-int main(void)
-{
-    char *frase = "Explorando el mundo de la programación en C";
-    char delimitador = ' '; // Suponiendo que queremos dividir la frase por espacios
-    char **palabras;
-
-    palabras = ft_split(frase, delimitador);
-    if (!palabras)
-    {
-        printf("Error: No se pudo dividir la frase.\n");
-        return (1);
-    }
-
-    for (size_t i = 0; palabras[i] != NULL; i++)
-    {
-        printf("Palabra %zu: '%s'\n", i, palabras[i]);
-        free(palabras[i]); // Liberamos cada palabra individualmente
-    }
-    free(palabras); // Liberamos el arreglo de palabras
-
-    return (0);
-}

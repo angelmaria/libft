@@ -29,20 +29,3 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	str[i] = 0;
 	return (str);
 }
-// Test (borrar)
-int main() {
-    const char *source_string = "Hello, world!";
-    unsigned int start_index = 7; // Start at index 7 (after the comma)
-    size_t length = 5; // Extract 5 characters
-
-    char *sub_string = ft_substr(source_string, start_index, length);
-
-    if (sub_string == NULL) {
-        printf("Error: ft_substr failed to allocate memory.\n");
-    } else {
-        printf("Substring: %s\n", sub_string);
-        free(sub_string); // Remember to free the allocated memory
-    }
-
-    return 0;
-}

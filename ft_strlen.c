@@ -21,14 +21,3 @@ size_t	ft_strlen(const char *s)
 		i++;
 	return (i);
 }
-// Test (borrar)
-// int main(void)
-// {
-//     char *str1 = "Hola, mundo!";
-//     char *str2 = "";
-
-//     printf("La longitud de '%s' es: %zu\n", str1, ft_strlen(str1));
-//     printf("La longitud de una cadena vacía es: %zu\n", ft_strlen(str2));
-
-//     return 0;
-// }
