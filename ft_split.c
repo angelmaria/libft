@@ -44,14 +44,14 @@ char	**free_array(char **s, size_t idx)
 	return (NULL);
 }
 
-size_t get_word_len(char const *s, char c)
+size_t	get_word_len(char const *s, char c)
 {
-	size_t len;
+	size_t	len;
 
 	len = 0;
 	while (*(s + len) && *(s + len) != c)
 		len++;
-	return len;
+	return (len);
 }
 
 char	**ft_split(char const *s, char c)
@@ -61,10 +61,9 @@ char	**ft_split(char const *s, char c)
 	size_t		word_cnt;
 	char		**words;
 
-	char **words = (char **)malloc(sizeof(char *) * (word_count(s, c) + 1));
+	words = (char **)malloc(sizeof(char *) * (word_count(s, c) + 1));
 	if (!s || !words)
 		return (NULL);
-
 	while (*s)
 	{
 		if (*s == c)
