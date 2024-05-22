@@ -12,72 +12,72 @@
 
 #include "libft.h"
 
-size_t	word_count(char const *s, char c)
+static size_t	ft_numstring(const char *s, char c)
 {
-	size_t		count;
+	size_t	count;
+	size_t	flag;
 
 	count = 0;
+	flag = 0;
+	if (!s)
+		return (0);
 	while (*s != '\0')
 	{
 		if (*s == c)
-			s++;
-		else
+			flag = 0;
+		else if (flag == 0)
 		{
+			flag = 1;
 			count++;
-			while (*s != '\0' && *s != c)
-				s++;
 		}
+		s++;
 	}
 	return (count);
 }
 
-char	**free_array(char **s, size_t idx)
+static size_t	ft_numchar(const char *s, char c)
 {
-	while (s[idx] != NULL && idx >= 0)
-	{
-		free(s[idx]);
-		s[idx] = NULL;
-		idx--;
-	}
-	free(s);
-	s = NULL;
+	size_t	count;
+
+	count = 0;
+	while (s[count] != c && s[count] != '\0')
+		count++;
+	return (count);
+}
+
+static char	**ft_free_matrix(const char **matrix, size_t len_matrix)
+{
+	while (len_matrix--)
+		free((void *)matrix[len_matrix]);
+	free(matrix);
 	return (NULL);
 }
 
-size_t	get_word_len(char const *s, char c)
+char	**ft_split(const char *s, char c)
 {
+	char	**matrix;
 	size_t	len;
+	size_t	i;
+	size_t	sl;
 
-	len = 0;
-	while (*(s + len) && *(s + len) != c)
-		len++;
-	return (len);
-}
-
-char	**ft_split(char const *s, char c)
-{
-	size_t		idx;
-	size_t		len;
-	size_t		word_cnt;
-	char		**words;
-
-	words = (char **)malloc(sizeof(char *) * (word_count(s, c) + 1));
-	if (!s || !words)
+	i = 0;
+	sl = 0;
+	len = ft_numstring(s, c);
+	matrix = (char **)malloc(sizeof(char *) * (len + 1));
+	if (!matrix)
 		return (NULL);
-	while (*s)
+	while (i < len)
 	{
-		if (*s == c)
+		while (*s == c)
 			s++;
-		else
-		{
-			len = get_word_len(s, c);
-			words[idx++] = ft_substr(s, 0, len);
-			if (!words[idx])
-				return (free_array(words, idx));
-			idx++;
-			s += len;
-		}
+		sl = ft_numchar((const char *)s, c);
+		matrix[i] = (char *)malloc(sizeof(char) * sl + 1);
+		if (!matrix[i])
+			return (ft_free_matrix((const char **)matrix, len));
+		ft_strlcpy(matrix[i], s, sl + 1);
+		s = (ft_strchr(s, (int)c));
+		i++;
 	}
-	words[idx] = 0;
-	return (words);
+	matrix[i] = 0;
+	return (matrix);
 }

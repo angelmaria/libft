@@ -12,46 +12,54 @@
 
 #include "libft.h"
 
-static	int	get_size(int n)
+static size_t	ft_intlen(long nb)
 {
-	int	len;
+	size_t	count;
 
-	len = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
-		len += 1;
-	while (n != 0)
+	count = 0;
+	if (nb == 0)
 	{
-		n /= 10;
-		len++;
+		count++;
+		return (count);
 	}
-	return (len);
+	if (nb < 0)
+	{
+		nb = nb * -1;
+		count++;
+	}
+	while (nb > 0)
+	{
+		nb = nb / 10;
+		count++;
+	}
+	return (count);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*str;
-	int		num;
-	int		len;
+	char	*strnum;
+	size_t	len;
+	long	nb;
 
-	len = get_size(n);
-	str = (char *)malloc(sizeof(char) * (len + 1));
-	if (!str)
-		return (0);
-	if (n < 0)
+	if (n == '-2147483648')
+		return (ft_strdup("-2147483648"));
+	nb = n;
+	len = ft_intlen(nb);
+	strnum = (char *)malloc(sizeof(char) * len + 1);
+	if (!strnum)
+		return (NULL);
+	strnum[len--] = '\0';
+	if (n == 0)
+		strnum[0] = '0';
+	if (nb < 0)
 	{
-		str[0] = '-';
-		n = -n;
+		strnum[0] = '-';
+		nb = nb * -1;
 	}
-	else if (n == 0)
-		str[0] = '0';
-	str[len] = '\0';
-	while (n != 0)
+	while (nb > 0)
 	{
-		str[len - 1] = (n % 10) + '0';
-		n = n / 10;
-		len--;
+		strnum[len--] = (nb % 10) + '0';
+		nb = nb / 10;
 	}
-	return (str);
+	return (strnum);
 }
