@@ -12,22 +12,24 @@
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	char	*newstr;
-	int		i;
+	t_list	*lst2;
+	t_list	*node;
 
-	if (!s || !f)
+	lst2 = NULL;
+	if (!lst || !f || !del)
 		return (NULL);
-	newstr = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (!newstr)
-		return (NULL);
-	i = 0;
-	while (s[i] != '\0')
+	while (lst != NULL)
 	{
-		newstr[i] = f(i, s[i]);
-		i++;
+		node = ft_lstnew(f(lst->content));
+		if (!node)
+		{
+			ft_lstclear(&lst, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&lst2, node);
+		lst = lst->next;
 	}
-	newstr[i] = '\0';
-	return (newstr);
+	return (lst2);
 }
