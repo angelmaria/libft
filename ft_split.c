@@ -15,19 +15,19 @@
 static size_t	ft_count_substring(const char *s, char c)
 {
 	size_t	count;
-	size_t	flag;
+	size_t	substring;
 
 	count = 0;
-	flag = 0;
+	substring = 0;
 	if (!s)
 		return (0);
 	while (*s != '\0')
 	{
 		if (*s == c)
-			flag = 0;
-		else if (flag == 0)
+			substring = 0;
+		else if (substring == 0)
 		{
-			flag = 1;
+			substring = 1;
 			count++;
 		}
 		s++;
