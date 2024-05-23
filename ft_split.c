@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static size_t	ft_numstring(const char *s, char c)
+static size_t	ft_count_substring(const char *s, char c)
 {
 	size_t	count;
 	size_t	flag;
@@ -62,7 +62,7 @@ char	**ft_split(const char *s, char c)
 
 	i = 0;
 	sl = 0;
-	len = ft_numstring(s, c);
+	len = ft_count_substring(s, c);
 	matrix = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!matrix)
 		return (NULL);
