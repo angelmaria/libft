@@ -12,72 +12,88 @@
 
 #include "libft.h"
 
-static size_t	ft_count_substring(const char *s, char c)
+static int	num_substring(char const *s1, char c)
 {
-	size_t	count;
-	size_t	substring;
+	int	count;
+	int	substring;
 
 	count = 0;
 	substring = 0;
-	if (!s)
+	if (*s1 == '\0')
 		return (0);
-	while (*s != '\0')
+	while (*s1 != '\0')
 	{
-		if (*s == c)
+		if (*s1 == c)
 			substring = 0;
 		else if (substring == 0)
 		{
 			substring = 1;
 			count++;
 		}
-		s++;
+		s1++;
 	}
 	return (count);
 }
 
-static size_t	ft_numchar(const char *s, char c)
+static size_t	numchar(char const *s2, char c, int i)
 {
-	size_t	count;
+	size_t	lenght;
 
-	count = 0;
-	while (s[count] != c && s[count] != '\0')
-		count++;
-	return (count);
+	lenght = 0;
+	while (s2[i] != c && s2[i] != '\0')
+	{
+		lenght++;
+		i++;
+	}
+	return (lenght);
 }
 
-static char	**ft_free_matrix(const char **matrix, size_t len_matrix)
+static char	**free_matrix(char const **matrix, int len_matrix)
 {
-	while (len_matrix--)
+	while (len_matrix > 0)
+	{
+		len_matrix--;
 		free((void *)matrix[len_matrix]);
+	}
 	free(matrix);
 	return (NULL);
 }
 
-char	**ft_split(const char *s, char c)
+static char	**affect(char const *s, char **dst, char c, int l)
 {
-	char	**matrix;
-	size_t	len;
-	size_t	i;
-	size_t	sl;
+	int	i;
+	int	j;
+	int	k;
 
 	i = 0;
-	sl = 0;
-	len = ft_count_substring(s, c);
-	matrix = (char **)malloc(sizeof(char *) * (len + 1));
-	if (!matrix)
-		return (NULL);
-	while (i < len)
+	j = 0;
+	while (s[i] != '\0' && j < l)
 	{
-		while (*s == c)
-			s++;
-		sl = ft_numchar((const char *)s, c);
-		matrix[i] = (char *)malloc(sizeof(char) * sl + 1);
-		if (!matrix[i])
-			return (ft_free_matrix((const char **)matrix, len));
-		ft_strlcpy(matrix[i], s, sl + 1);
-		s = (ft_strchr(s, (int)c));
-		i++;
+		k = 0;
+		while (s[i] == c)
+			i++;
+		dst[j] = (char *)malloc(sizeof(char) * numchar(s, c, i) + 1);
+		if (dst[j] == NULL)
+			return (free_matrix((char const **)dst, j));
+		while (s[i] != '\0' && s[i] != c)
+			dst[j][k++] = s[i++];
+		dst[j][k] = '\0';
+		j++;
 	}
-	matrix[i] = 0;
-	return (matrix);
+	dst[j] = 0;
+	return (dst);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**dst;
+	int		l;
+
+	if (s == NULL)
+		return (NULL);
+	l = num_substring(s, c);
+	dst = (char **)malloc(sizeof(char *) * (l + 1));
+	if (dst == NULL)
+		return (NULL);
+	return (affect(s, dst, c, l));
 }

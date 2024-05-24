@@ -14,19 +14,19 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	b;
-	void	*p;
+	size_t	total;
+	char	*mem;
+	size_t	i;
 
-	if (count == 0 || size == 0)
-	{
-		count = 1;
-		size = 1;
-	}
-	b = count * size;
-	p = malloc(b);
-	if (p == NULL)
+	total = count * size;
+	mem = malloc(total);
+	if (mem == NULL)
 		return (NULL);
-	else
-		ft_bzero(p, b);
-	return (p);
+	i = 0;
+	while (i < total)
+	{
+		mem[i] = 0;
+		i++;
+	}
+	return (mem);
 }
