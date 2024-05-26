@@ -69,8 +69,6 @@ $(NAME): $(OBJS)
 
 %.o: %.c
 	@gcc $(FLAGS) -c $< -o $@
-# esta receta solo se ejecuta si cambia alguno de los archivos .c
-# las dos variables automáticas, $< y $@, sustituyen los nombres del archivo fuente (.c o "input") y el archivo objetivo (.o o "output") respectivamente.
 
 all: $(NAME)
 
